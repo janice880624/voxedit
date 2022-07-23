@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <title> Voxedit 畫圖計算小工具 </title>
+        <link rel="stylesheet" href="calculate.css" />
+    </head>
+
+    <body>
+        <header>
+            <h1 id="head"> Voxedit 畫圖計算小工具 </h1>
+        </header>
+
+        <div>
+            請選擇你的計算單位：<br>
+            <input type="radio" name="unit" value="cm" id="cm"> cm <br>
+            <input type="radio" name="unit" value="inch" id="inch"> inch <br>
+        </div>
+
+        <div>
+            <p> 長度:<input  id="coke" type="text"></p>
+        </div>
+        
+        <button id="btn"> 計算 </button>
+
+        <p> 這樣總共需要 <em id="total"></em> Voxel
+
+        <script>
+            var btn = document.getElementById('btn');
+            var ans = 0
+    
+            btn.onclick = function(){
+
+                var long = parseInt(document.getElementById('coke').value);
+
+                var cm = document.getElementById('cm');
+                var inch = document.getElementById('inch');
+
+                if (cm.checked == true){
+                    ans = long * 32 / 100
+                } else if (inch.checked == true){
+                    ans = long * 32 / 39.3700787
+                } else{
+                    ans = 0
+                }
+
+                console.log(long);
+                console.log(cm.checked);
+                console.log(inch.checked);
+
+                document.getElementById('total').textContent = ans;
+            }
+        </script>
+
+
+    </body>
+</html>
