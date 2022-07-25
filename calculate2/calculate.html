@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <title> Voxedit 畫圖計算小工具 </title>
+    <link rel="stylesheet" href="calculate.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- <div>
+        請選擇你的計算單位：<br>
+        <input type="radio" name="unit" value="cm" id="cm"> cm <br>
+        <input type="radio" name="unit" value="inch" id="inch"> inch <br>
+    </div>
+
+    <div>
+        <p> 長度:<input id="coke" type="text"></p>
+    </div>
+
+    <button id="btn"> 計算 </button> -->
+
+    
+
+    <div class="col-md-10 col-lg-8 col-xl-6 offset-md-1 offset-lg-2 offset-xl-3">
+        <h4><b> Voxedit 畫圖計算小工具 </b></h4>
+        <div class="card card-body">
+            <span
+                class="text-muted"> 這個工具可以幫助你快速計算你需要多少個 Voxel</span>
+            <form action="" method="POST">
+                <div class="row my-3">
+                    <div class="col-6">
+                        <b> 計算單位： </b><br>
+                        <input type="radio" name="unit" value="cm" id="cm"> cm <br>
+                        <input type="radio" name="unit" value="inch" id="inch"> inch <br>
+                    </div>
+                    <div class="col-6">
+                        <b> 長度： </b>
+                        <input id="coke" class="form-control" type="text" value="" placeholder="(數字)(必填)" name="form_value_b"
+                            required>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary btn-block" type="submit">計算結果</button>
+                </div>
+            </form>
+            <hr>
+            <h4><b>計算結果：</b></h4>
+            <p> 這樣總共需要 <em id="total"></em> Voxel </p>
+            <br>
+        </div>
+    </div>
+
+
+    <script>
+        var btn = document.getElementById('btn');
+        var ans = 0
+
+        btn.onclick = function () {
+
+            var long = parseInt(document.getElementById('coke').value);
+
+            var cm = document.getElementById('cm');
+            var inch = document.getElementById('inch');
+
+            if (cm.checked == true) {
+                ans = long * 32 / 100
+            } else if (inch.checked == true) {
+                ans = long * 32 / 39.3700787
+            } else {
+                ans = 0
+            }
+
+            console.log(long);
+            console.log(cm.checked);
+            console.log(inch.checked);
+
+            document.getElementById('total').textContent = ans;
+        }
+    </script>
+
+
+</body>
+
+</html>
