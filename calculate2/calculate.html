@@ -29,11 +29,10 @@
     
 
     <div class="col-md-10 col-lg-8 col-xl-6 offset-md-1 offset-lg-2 offset-xl-3">
-        <h4><b> Voxedit 畫圖計算小工具 </b></h4>
+        <h3><b> Voxedit 畫圖計算小工具 </b></h3>
         <div class="card card-body">
-            <span
-                class="text-muted"> 這個工具可以幫助你快速計算你需要多少個 Voxel</span>
-            <form action="" method="POST">
+            <span class="text-muted"> 這個工具可以幫助你快速計算你需要多少個 Voxel</span>
+            <div>
                 <div class="row my-3">
                     <div class="col-6">
                         <b> 計算單位： </b><br>
@@ -46,14 +45,15 @@
                             required>
                     </div>
                 </div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-outline-primary btn-block" type="submit">計算結果</button>
+                <div class="d-grid gap-2"> 
+                    <button class="btn btn-outline-primary btn-block" id="btn">計算結果</button>
                 </div>
-            </form>
+            </div>
             <hr>
-            <h4><b>計算結果：</b></h4>
-            <p> 這樣總共需要 <em id="total"></em> Voxel </p>
-            <br>
+            <h5><b>計算結果：</b></h5>
+            <input id="total" class='text-center' style='font-size:2em;' type='text' disabled><br>
+            <h5><b>最少需要的數量：</b></h5>
+            <input id="total2" class='text-center' style='font-size:2em;' type='text' disabled>
         </div>
     </div>
 
@@ -81,7 +81,8 @@
             console.log(cm.checked);
             console.log(inch.checked);
 
-            document.getElementById('total').textContent = ans;
+            document.getElementById('total').value = ans;
+            document.getElementById('total2').value = Math.round(ans);
         }
     </script>
 
