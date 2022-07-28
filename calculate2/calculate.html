@@ -12,37 +12,22 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 
-<body>
-
-    <!-- <div>
-        請選擇你的計算單位：<br>
-        <input type="radio" name="unit" value="cm" id="cm"> cm <br>
-        <input type="radio" name="unit" value="inch" id="inch"> inch <br>
-    </div>
-
-    <div>
-        <p> 長度:<input id="coke" type="text"></p>
-    </div>
-
-    <button id="btn"> 計算 </button> -->
-
-    
+<body style="margin-top: 30px;">
 
     <div class="col-md-10 col-lg-8 col-xl-6 offset-md-1 offset-lg-2 offset-xl-3">
-        <h3><b> Voxedit 畫圖計算小工具 </b></h3>
+        <h2 class="text-center"><b> Voxedit 畫圖計算小工具 </b></h2>
         <div class="card card-body">
-            <span class="text-muted"> 這個工具可以幫助你快速計算你需要多少個 Voxel</span>
+            <span class="text-muted"> 這個工具可以幫助你快速計算你需要多少個 Voxel </span>
             <div>
                 <div class="row my-3">
                     <div class="col-6">
-                        <b> 計算單位： </b><br>
+                        <h5><b> 計算單位：</b></h5>
                         <input type="radio" name="unit" value="cm" id="cm"> cm <br>
                         <input type="radio" name="unit" value="inch" id="inch"> inch <br>
                     </div>
                     <div class="col-6">
-                        <b> 長度： </b>
-                        <input id="coke" class="form-control" type="text" value="" placeholder="(數字)(必填)" name="form_value_b"
-                            required>
+                        <h5><b> 長度：</b></h5>
+                        <input id="coke" class="form-control" type="text" value="" placeholder="(數字)(必填)" required>
                     </div>
                 </div>
                 <div class="d-grid gap-2"> 
@@ -50,17 +35,37 @@
                 </div>
             </div>
             <hr>
-            <h5><b>計算結果：</b></h5>
+            <h5><b> 計算結果： </b></h5>
             <input id="total" class='text-center' style='font-size:2em;' type='text' disabled><br>
-            <h5><b>最少需要的數量：</b></h5>
+            <h5><b> 最少需要的數量： </b></h5>
             <input id="total2" class='text-center' style='font-size:2em;' type='text' disabled>
+        </div>
+        <div style="height: 30px;"></div>
+        <div class="card card-body">
+            <span class="text-muted"> 這個工具可以幫助你快速計算『內角』與『內角和』角度 </span>
+            <div>
+                <div class="my-3 d-grid gap-2 col-12">
+                    <h5><b> 多邊形邊數：</b></h5>
+                    <input id="number" class="form-control" type="text" value="" placeholder="(數字)(必填)" required>
+                </div>
+                <div class="d-grid gap-2"> 
+                    <button class="btn btn-outline-primary btn-block" id="btn2">計算結果</button>
+                </div>
+            </div>
+            <hr>
+            <h5><b> 內角和： </b></h5>
+            <input id="angle" class='text-center' style='font-size:2em;' type='text' disabled><br>
+            <h5><b> 單一內角： </b></h5>
+            <input id="angle2" class='text-center' style='font-size:2em;' type='text' disabled>
         </div>
     </div>
 
 
     <script>
         var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2');
         var ans = 0
+        var angle = 0
 
         btn.onclick = function () {
 
@@ -84,6 +89,15 @@
             document.getElementById('total').value = ans;
             document.getElementById('total2').value = Math.round(ans);
         }
+
+        btn2.onclick = function (){
+            var n = parseInt(document.getElementById('number').value);
+
+            angle = (n-2) * 180;
+
+            document.getElementById('angle').value = angle;
+            document.getElementById('angle2').value = angle/n;
+        } 
     </script>
 
 
