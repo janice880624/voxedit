@@ -1,4 +1,21 @@
 body{
-    margin-top: 20px;
     margin: 0px; 
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(85, 105, 165);
+    color: white;
+}
+
+header{
+    overflow: hidden;
+    background-color: rgb(85, 105, 165);
+    padding: 0px;
+    margin: 12px 0px;
+    padding: 5px 0px;
+    text-align: center;
+    font-size: 30px;
+    color: white;
 }
