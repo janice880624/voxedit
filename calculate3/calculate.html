@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <title> Voxedit 畫圖計算小工具 </title>
+    <link rel="stylesheet" href="calculate.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        Voxedit 畫圖計算小工具
+    </header>
+
+    <div class="col-md-10 col-lg-8 col-xl-6 offset-md-1 offset-lg-2 offset-xl-3 box1"> 
+        <div class="card card-body">
+            <span class="text-muted flip"> 👉 這個工具可以幫助你快速計算你 Bounding Box 範圍 </span>
+            <div class="panel">
+                <div class="row my-3">
+                    <div class="col-6">
+                        <h5><b> 計算單位：</b></h5>
+                        <input type="radio" name="unit" value="cm" id="cm_box"> cm <br>
+                        <input type="radio" name="unit" value="inch" id="inch_box"> inch <br>
+                    </div>
+                    <div class="col-6">
+                        <h5><b> 長度：</b></h5>
+                        <input id="length" class="form-control" type="text" value="" placeholder="(長)(必填)" required>
+                        <input id="width" class="form-control" type="text" value="" placeholder="(寬)(必填)" required>
+                        <input id="height" class="form-control" type="text" value="" placeholder="(高)(必填)" required>
+                    </div>
+                </div>
+                <div class="d-grid gap-2"> 
+                    <button class="btn btn-outline-primary btn-block" id="btn_box">計算結果</button>
+                </div>
+            </div>
+            <hr>
+            <h5><b> 計算結果： </b></h5>
+            <input id="total_box" class='text-center' style='font-size:2em;' type='text' disabled><br>
+            <h5><b> 最少需要的數量： </b></h5>
+            <input id="total2_box" class='text-center' style='font-size:2em;' type='text' disabled>
+        </div>
+        <div style="height: 30px;"></div>
+        <div class="card card-body">
+            <span class="text-muted"> 👉 這個工具可以幫助你快速計算你需要多少個 Voxel </span>
+            <div>
+                <div class="row my-3">
+                    <div class="col-6">
+                        <h5><b> 計算單位：</b></h5>
+                        <input type="radio" name="unit" value="cm" id="cm"> cm <br>
+                        <input type="radio" name="unit" value="inch" id="inch"> inch <br>
+                    </div>
+                    <div class="col-6">
+                        <h5><b> 長度：</b></h5>
+                        <input id="coke" class="form-control" type="text" value="" placeholder="(數字)(必填)" required>
+                    </div>
+                </div>
+                <div class="d-grid gap-2"> 
+                    <button class="btn btn-outline-primary btn-block" id="btn">計算結果</button>
+                </div>
+            </div>
+            <hr>
+            <h5><b> 計算結果： </b></h5>
+            <input id="total" class='text-center' style='font-size:2em;' type='text' disabled><br>
+            <h5><b> 最少需要的數量： </b></h5>
+            <input id="total2" class='text-center' style='font-size:2em;' type='text' disabled>
+        </div>
+        <div style="height: 30px;"></div>
+        <div class="card card-body">
+            <span class="text-muted"> 👉 這個工具可以幫助你快速製作出像素圓 </span>
+            <iframe src="https://easycpstest.com/wp-content/plugins/minecraft-generator/frame.php" height="800px"></iframe>
+        </div>
+    </div>
+    
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span> Janice </span></strong>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+        $(function(){
+        $(".flip").click(function(){
+            $(".panel").slideToggle("slow");
+            $(".xs1").toggle();
+            $(".xs2").toggle();
+        });});
+
+        var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2');
+        var btn3 = document.getElementById('btn_box');
+        var ans = 0
+        var angle = 0
+        var ans_length = 0
+        var ans_width = 0
+        var ans_height = 0
+
+        btn.onclick = function () {
+
+            var long = parseInt(document.getElementById('coke').value);
+
+            var cm = document.getElementById('cm');
+            var inch = document.getElementById('inch');
+
+            if (cm.checked == true) {
+                ans = long * 32 / 100
+            } else if (inch.checked == true) {
+                ans = long * 32 / 39.3700787
+            } else {
+                ans = 0
+            }
+
+            console.log(long);
+            console.log(cm.checked);
+            console.log(inch.checked);
+
+            document.getElementById('total').value = ans;
+            document.getElementById('total2').value = Math.round(ans);
+        }
+
+        btn2.onclick = function (){
+            var n = parseInt(document.getElementById('number').value);
+
+            angle = (n-2) * 180;
+
+            document.getElementById('angle').value = angle;
+            document.getElementById('angle2').value = angle/n;
+        } 
+
+        btn3.onclick = function () {
+
+            var length = parseInt(document.getElementById('length').value);
+            var width = parseInt(document.getElementById('width').value);
+            var height = parseInt(document.getElementById('height').value);
+
+            var cm_box = document.getElementById('cm_box');
+            var inch_box = document.getElementById('inch_box');
+
+            if (cm_box.checked == true) {
+                ans_length = length * 32 / 100
+                ans_width = width * 32 / 100
+                ans_height = height * 32 / 100
+            } else if (inch_box.checked == true) {
+                ans_length = length * 32 / 39.3700787
+                ans_width = width * 32 / 39.3700787
+                ans_height = height * 32 / 39.3700787
+            } else {
+                ans_length = 0
+                ans_width = 0
+                ans_height = 0
+            }
+
+            document.getElementById('total_box').value = ans_length.toString() + "/" + ans_width.toString() + "/" + ans_height.toString();
+            document.getElementById('total2_box').value = Math.round(ans_length) + "/" + Math.round(ans_width) + "/" + Math.round(ans_height);
+        }
+    </script>
+
+
+</body>
+
+</html>
