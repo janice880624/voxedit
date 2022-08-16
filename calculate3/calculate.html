@@ -29,9 +29,9 @@
                     </div>
                     <div class="col-6">
                         <h5><b> 長度：</b></h5>
-                        <input id="length" class="form-control" type="text" value="" placeholder="(長)(必填)(X Width)" required>
-                        <input id="height" class="form-control" type="text" value="" placeholder="(高)(必填 Y Height)" required>
-                        <input id="width" class="form-control" type="text" value="" placeholder="(寬)(必填 Z Depth)" required>  
+                        <input id="length" class="form-control inputbox" type="text" value="" placeholder="(長)(必填)(X Width)" required>
+                        <input id="height" class="form-control inputbox" type="text" value="" placeholder="(高)(必填)(Y Height)" required>
+                        <input id="width" class="form-control inputbox" type="text" value="" placeholder="(寬)(必填)(Z Depth)" required>  
                     </div>
                 </div>
                 <div class="d-grid gap-2"> 
@@ -149,8 +149,8 @@
                 ans_height = 0
             }
 
-            document.getElementById('total_box').value = ans_length.toString() + "/" + ans_height.toString() + "/" + ans_width.toString();
-            document.getElementById('total2_box').value = Math.round(ans_length) + "/" + Math.round(ans_height) + "/" + Math.round(ans_width);
+            document.getElementById('total_box').value = ans_length.toFixed(2).toString() + " / " + ans_height.toFixed(2).toString() + " / " + ans_width.toFixed(2).toString();
+            document.getElementById('total2_box').value = Math.round(ans_length) + " / " + Math.round(ans_height) + " / " + Math.round(ans_width);
         }
     </script>
 
