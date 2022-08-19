@@ -105,7 +105,7 @@
 
         btn.onclick = function () {
 
-            var long = parseInt(document.getElementById('coke').value);
+            var long = Number(document.getElementById('coke').value);
 
             var cm = document.getElementById('cm');
             var inch = document.getElementById('inch');
@@ -128,9 +128,9 @@
 
         btn3.onclick = function () {
 
-            var length = parseInt(document.getElementById('length').value);
-            var width = parseInt(document.getElementById('width').value);
-            var height = parseInt(document.getElementById('height').value);
+            var length = Number(document.getElementById('length').value);
+            var width = Number(document.getElementById('width').value);
+            var height = Number(document.getElementById('height').value);
 
             var cm_box = document.getElementById('cm_box');
             var inch_box = document.getElementById('inch_box');
